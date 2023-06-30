@@ -24,8 +24,8 @@ const Profile = (props) => {
             return response.json()
           })
           .then(data => {
-            setProfile(data[0].servidor);
-            console.log(data[0].servidor)
+            setProfile(data[0].fichasCargoEfetivo[0]);
+            console.log(data[0].fichasCargoEfetivo[0])
           })
           .catch(err => console.log(err))
           .finally(() => setLoading(false))
@@ -37,8 +37,9 @@ const Profile = (props) => {
       {loading && <div>Carregando...</div>}
       {profile && (
         <div>
-          <h3>NOME: {profile.pessoa.nome}</h3>
-          <h4>Órgão: {profile.orgaoServidorExercicio.nome}</h4>
+          <h3>NOME: {profile.nome}</h3>
+          <h4>Órgão: {profile.orgaoServidorExercicio.toUpperCase()}</h4>
+          <h4>Cargo: {profile.cargo}</h4>
         </div>
       )}
     </div>
