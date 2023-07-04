@@ -1,3 +1,4 @@
+import { env } from 'process'
 import { useState, useEffect} from 'react'
 
 const Profile = (props) => {
@@ -11,7 +12,7 @@ const Profile = (props) => {
       const url = 'https://api.portaldatransparencia.gov.br/api-de-dados/servidores?'
       const parameters = {
       headers: {
-      'chave-api-dados': '1385c8abafee55f02d848fcee11ac219',
+      'chave-api-dados': process.env.NEXT_PUBLIC_API_KEY,
           },
       }
         fetch(url + new URLSearchParams({nome, orgaoServidorExercicio, pagina}), parameters)
